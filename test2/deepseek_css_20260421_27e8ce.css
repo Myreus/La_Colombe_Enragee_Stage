@@ -1,0 +1,138 @@
+:root {
+    --couleur-principale: #e68e94;
+    --couleur-fond-noir: #0d0d0d;
+    --couleur-fond-blanc: #f2f2f2;
+    --taille-navbar: 25vh;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    background-color: var(--couleur-fond-blanc);
+    width: 100%;
+    height: 50vh;
+    border-top: 10px solid var(--couleur-principale);
+}
+
+nav {
+    position: relative;          /* AJOUT : pour que ::after se cale sur nav */
+    width: 100%;
+    height: clamp(50px, var(--taille-navbar), 200px);
+    background-color: var(--couleur-fond-noir);
+    justify-content: space-between;  /* MODIFIÉ : espace entre logo et menu */
+    align-items: center;
+    display: flex;
+    padding: 0 2rem;            /* AJOUT : un peu d’espace latéral */
+    box-sizing: border-box;
+}
+
+/* Logo */
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+nav img {
+    height: clamp(50px, var(--taille-navbar), 200px);
+    max-height: 100%;
+    width: auto;
+}
+
+/* Menu de navigation (version desktop) */
+.nav-links {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    gap: 1.5rem;               /* alternative à justify-content */
+}
+
+.nav-links li a {
+    color: var(--couleur-principale);
+    font-size: clamp(14px, 1.6vw, 40px);
+    font-family: 'Lora', serif;
+    text-decoration: none;     /* AJOUT : enlève le soulignement */
+    white-space: nowrap;
+}
+
+.nav-links li a:hover {
+    color: var(--couleur-fond-blanc);
+}
+
+/* Barre décorative sous le nav */
+nav::after {
+    content: "";               /* OBLIGATOIRE */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-color: var(--couleur-principale);
+}
+
+/* Bouton hamburger : caché par défaut */
+.menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.menu svg {
+    display: block;
+    width: 32px;
+    height: 32px;
+    stroke: currentColor;      /* hérite de la couleur du bouton */
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    fill: none;
+}
+
+/* ----- RESPONSIVE (max-width: 700px) ----- */
+@media (max-width: 700px) {
+    nav {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        display: none;               /* caché par défaut sur mobile */
+        position: absolute;
+        top: 100%;                   /* juste sous la navbar */
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--couleur-fond-noir);
+        padding: 1rem 0;
+        gap: 0;
+        z-index: 100;
+    }
+
+    .nav-links.show {
+        display: flex;               /* affiché quand on clique */
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
+        white-space: normal;
+    }
+
+    .menu {
+        display: block;              /* bouton visible */
+        color: var(--couleur-principale);
+    }
+}

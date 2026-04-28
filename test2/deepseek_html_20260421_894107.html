@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Hamburger</title>
+    <link rel="stylesheet" href="./deepseek_css_20260421_27e8ce.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="./logo_la_colombe_enragee.jpg" alt="Logo de La Colombe Enragée">
+        </div>
+        <button class="menu" aria-label="Menu">
+            <svg viewBox="0 0 24 24">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#">Actualités</a></li>
+            <li><a href="#">Créations</a></li>
+            <li><a href="#">Actions Culturelles</a></li>
+            <li><a href="#">Cours et Stage</a></li>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main></main>
+
+    <script>
+        // Toggle du menu hamburger
+        const menuBtn = document.querySelector('.menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
+        // Optionnel : fermer le menu après un clic sur un lien
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+
+</html>
