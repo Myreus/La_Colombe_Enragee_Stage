@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap'); */
+
+@font-face {
+    font-family: 'Crayon Hand Bold';
+    src: url('./fonts/CrayonHandBoldW00-Bold.woff2') format('woff2'),
+         url('./fonts/CrayonHandBoldW00-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; 
+}
 
 :root {
     --couleur-principale: #e68e94;
@@ -6,7 +16,7 @@
     --couleur-fond-blanc: #f2f2f2;
     --couleur-gris: #404040;
     --couleur-secondaire: #f29727;
-    --taille-navbar: 25vh;
+    --taille-navbar: 22vh;
 }
 
 body {
@@ -49,8 +59,8 @@ nav ul {
 
 nav li a {
     color: var(--couleur-principale);
-    font-size: clamp(18px, 1.6vw, 40px);
-    font-family: 'Lora', serif;
+    font-size: clamp(18px, 1.6vw, 100px);
+    font-family: 'Sofia Sans', sans-serif;
 }
 
 nav ul li a:hover {
@@ -186,35 +196,49 @@ nav::after {
 
 /* Section, article et enfants */
 
-.section-title {
-    color: var(--couleur-fond-blanc);
-    font-size: clamp(20px, 2vw, 50px);
-    font-weight: 400;
-    font-family: 'Lora', serif;
-    margin-left: 5vw;
-    padding-bottom: 5px;
-    border-bottom: 1px solid var(--couleur-gris);
-    max-width: 40vw;
-}
-
-section article {
+article {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: 10vh 10vw;
     padding-bottom: 5vh;
+    gap: 1vw;
+    width: 100%;
 }
 
-section:last-child article:last-child {
+/* article:first-child {
+    margin-top: 4vh;
+} */
+
+article:last-child {
     margin-bottom: 0;
 }
 
-section article div, section article img {
-    width: 35vw;
+article img {
+    width: 55vw;
+    max-width: 100%;
 }
 
-section article div {
+article:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+article section {
+    max-width: 43vw;
+    padding: 0 2vw 0 2vw;
+}
+
+article section p {
+    font-size: clamp(14px, 1.2vw, 30px);
+    font-family: 'Open Sans', sans-serif;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+article section {
     display: flex;
     flex-direction: column;
     gap: 4vh;
@@ -226,11 +250,11 @@ article button {
     border: 1px solid var(--couleur-secondaire);
     color: var(--couleur-secondaire);
     font-size: clamp(18px, 1.8vw, 50px);
-    font-family: 'Lora', serif;
+    font-family: 'Sofia Sans', sans-serif;
     padding: 10px 10px;
     cursor: pointer;
     width: clamp(100px, 14vw, 150px);
-    height: 8vh;
+    height: clamp(50px, 8vh, 75px);
 }
 
 .activity-name, .subtitle, .description {
@@ -239,9 +263,8 @@ article button {
 }
 
 .activity-name {
-    font-size: clamp(18px, 1.8vw, 50px);
-    font-weight: 500;
-    font-family: 'Sofia Sans Semi Condensed', serif;
+    font-size: clamp(18px, 4vw, 70px);
+    font-family: 'Crayon Hand Bold', cursive;
 }
 
 /* footer grid */
@@ -317,23 +340,26 @@ footer img {
 
 /* Gestion du flex du contenu principal */
 @media (max-width: 1024px) {
-    section article:nth-child(odd) {
-        flex-direction: column;
-        gap: 4vh;
-        border-bottom: 1px solid var(--couleur-gris);
-    }
-
-    section article:nth-child(even) {
+    article:nth-child(odd) {
         flex-direction: column-reverse;
         gap: 4vh;
         border-bottom: 1px solid var(--couleur-gris);
     }
 
-    section:last-child article:last-child {
+    article:nth-child(even) {
+        flex-direction: column-reverse;
+        gap: 4vh;
+    }
+
+    article:last-child {
         border-bottom: none;
     }
 
-    section article div, section article img {
-        width: 80vw;
+    article section {
+        width: 90%;
+    }
+    
+    article img {
+        width: 100vw;
     }
 }
