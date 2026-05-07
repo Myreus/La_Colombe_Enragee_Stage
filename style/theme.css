@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+@font-face {
+    font-family: 'Crayon Hand Bold';
+    src: url('./fonts/CrayonHandBoldW00-Bold.woff2') format('woff2'),
+         url('./fonts/CrayonHandBoldW00-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; 
+}
+
+:root {
+    --couleur-principale: #e68e94;
+    --couleur-fond-noir: #0d0d0d;
+    --couleur-fond-blanc: #f2f2f2;
+    --couleur-gris: #404040;
+    --couleur-secondaire: #f29727;
+    --couleur-vert: #37c6b8;
+    --taille-navbar: 22vh;
+}

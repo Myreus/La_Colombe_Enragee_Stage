@@ -1,0 +1,336 @@
+:root {
+    --couleur-principale: #e68e94;
+    --couleur-fond-noir: #0d0d0d;
+    --couleur-fond-blanc: #f2f2f2;
+    --couleur-gris: #404040;
+    --couleur-secondaire: #f29727;
+    --taille-navbar: 22vh;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+body {
+    background-color: blue;
+}
+
+html {
+    background-color: yellow;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--couleur-principale);
+}
+
+/* Navigation */
+
+nav {
+    width: 100%;
+    height: clamp(50px, var(--taille-navbar), 200px);
+    background-color: var(--couleur-fond-noir);
+}
+
+nav li {
+    height: 100%;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    text-align: center;
+    gap: 6px;
+}
+
+nav li a {
+    color: var(--couleur-principale);
+    font-size: clamp(18px, 1.6vw, 100px);
+    font-family: 'Sofia Sans', sans-serif;
+}
+
+nav ul li a:hover {
+    color: var(--couleur-fond-blanc);
+}
+
+nav img {
+    height: clamp(50px, var(--taille-navbar), 200px);
+}
+
+nav::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-color: var(--couleur-principale);
+}
+
+/* Menu Hamburger */
+
+.menu-toggle {
+    display: none;
+}
+
+.hamburger-button {
+    display: none;
+    background-color: transparent;
+    border: none;
+    color: var(--couleur-principale);
+    width: auto;
+}
+
+.hamburger-button svg {    
+    width: 100%;
+}
+
+.hamburger-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-75%);
+    width: 250px;
+    background: var(--couleur-fond-noir);
+    list-style: none;
+    text-align: center;
+    border: 1px solid var(--couleur-principale);
+}
+
+.hamburger-links li {
+    padding: 8px;
+}
+
+.hamburger-container {
+    display: none;
+    position: relative;
+    width: 40%;
+    height: auto;
+}
+
+.hamburger-button {
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+
+.hamburger-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.hamburger-button svg:nth-child(2) {
+    opacity: 0;
+}
+
+/* Sous-menu déroulants de la barre nav */
+
+.sub-menu-container {
+    position: relative;
+}
+
+/* Le pont invisible */
+.sub-menu-container::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.sub-menu-container::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.sub-menu-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px); /* Positionné juste en dessous du pont invisible */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    background: var(--couleur-fond-noir);
+    list-style: none;
+    text-align: center;
+    border: 1px solid var(--couleur-principale);
+}
+
+.sub-menu-content li {
+    padding: 10px;
+    display: block;
+}
+
+.sub-menu-content li a {
+    text-decoration: none;
+    color: var(--couleur-principale);
+    display: block;
+}
+
+.sub-menu-container:hover .sub-menu-content {
+    display: block;
+}
+
+
+/* Admin panel styles */
+/* Admin panel styles – fond blanc */
+.panel {
+    background: var(--couleur-fond-blanc);
+    border: 1px solid var(--couleur-gris);
+    border-radius: 12px;
+    margin: 2rem auto 0 auto;
+    max-width: 1200px;
+    width: 90%;
+    overflow: hidden;
+    color: #222;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.login-panel {
+    max-width: 400px;
+}
+
+.header-panel {
+    display: flex;
+    background-color: #f9f9f9;
+    border-bottom: 2px solid var(--couleur-principale);
+    gap: 0;
+}
+
+.login-header {
+    justify-content: center;
+}
+
+.tab-button {
+    background: transparent;
+    border: none;
+    padding: 1rem 1.8rem;
+    font-size: 1rem;
+    font-family: 'Lora', serif;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.tab-button:hover {
+    background: rgba(230, 142, 148, 0.1);
+    color: var(--couleur-principale);
+}
+
+.tab-button.active {
+    background: var(--couleur-principale);
+    color: var(--couleur-fond-blanc);
+    border-radius: 8px 8px 0 0;
+}
+
+.panel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.panel-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+}
+
+.tab-content {
+    display: none;
+    padding-left: 1rem;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.color-square {
+    width: 120px;
+    height: 120px;
+    margin: 1rem auto;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Pour le contenu texte */
+.tab-content p {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: var(--couleur-fond-noir);
+}
+
+/* Main */
+main {
+    background-color: var(--couleur-fond-blanc);
+    width: 100%;
+    height: 100%;
+    border-top: 10px solid var(--couleur-principale);
+}
+
+/* footer grid */
+
+footer {
+    background-color: var(--couleur-fond-noir);
+    color: var(--couleur-fond-blanc);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 4fr 1fr 2fr;
+    border-top: 1px solid #1f1f1f;
+    padding: 0;
+}
+
+footer section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1vh;
+}
+
+footer section:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+footer section:nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+
+footer img {
+    width: clamp(30px, 3.3vw, 75px);
+    height: auto;
+    margin: 0 0.3vw;
+}
+
+footer a, footer p {
+    color: var(--couleur-fond-blanc);
+    font-family: 'Sofia Sans', sans-serif;
+    font-size: clamp(10px, 1vw, 30px);
+}
+

@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+a {
+    cursor: pointer;
+}
+    
+nav {
+    width: 100%;
+    height: clamp(50px, var(--taille-navbar), 200px);
+    background-color: var(--couleur-fond-noir);
+}
+
+nav li {
+    height: 100%;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    text-align: center;
+    gap: 6px;
+}
+
+nav li a {
+    color: var(--couleur-principale);
+    font-size: clamp(18px, 1.6vw, 100px);
+    font-family: 'Sofia Sans', sans-serif;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: var(--couleur-fond-blanc);
+}
+
+nav img {
+    height: clamp(50px, var(--taille-navbar), 200px);
+}
+
+nav::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-color: var(--couleur-principale);
+}
+
+/* Menu Hamburger */
+
+.menu-toggle {
+    display: none;
+}
+
+.hamburger-button {
+    display: none;
+    background-color: transparent;
+    border: none;
+    color: var(--couleur-principale);
+    width: auto;
+}
+
+.hamburger-button svg {    
+    width: 100%;
+}
+
+.hamburger-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-75%);
+    width: 250px;
+    background: var(--couleur-fond-noir);
+    list-style: none;
+    text-align: center;
+    border: 1px solid var(--couleur-principale);
+}
+
+.hamburger-links li {
+    padding: 8px;
+}
+
+.hamburger-container {
+    display: none;
+    position: relative;
+    width: 40%;
+    height: auto;
+}
+
+.hamburger-button {
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+
+.hamburger-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.hamburger-button svg:nth-child(2) {
+    opacity: 0;
+}
+
+/* Sous-menu déroulants de la barre nav */
+
+.sub-menu-container {
+    position: relative;
+}
+
+/* Le pont invisible */
+.sub-menu-container::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.sub-menu-container::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.sub-menu-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px); /* Positionné juste en dessous du pont invisible */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    background: var(--couleur-fond-noir);
+    list-style: none;
+    text-align: center;
+    border: 1px solid var(--couleur-principale);
+}
+
+.sub-menu-content li {
+    padding: 10px;
+    display: block;
+}
+
+.sub-menu-content li a {
+    text-decoration: none;
+    color: var(--couleur-principale);
+    display: block;
+}
+
+.sub-menu-container:hover .sub-menu-content {
+    display: block;
+}
+
+/* Media Queries */
+/* Gestion de la visibilité du menu hamburger et menus déroulants */
+@media (max-width: 700px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hamburger-button {
+        display: block;
+        
+    }
+
+    .menu-toggle:checked ~ .hamburger-links {
+        display: block;
+    }
+
+    .menu-toggle:checked ~ .hamburger-button svg:nth-child(2) {
+        opacity: 1;
+    }
+
+    .menu-toggle:checked ~ .hamburger-button svg:nth-child(1) {
+        opacity: 0;
+    }
+}
