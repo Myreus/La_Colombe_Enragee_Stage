@@ -4,7 +4,7 @@ USE lce;
 
 CREATE TABLE IF NOT EXISTS category(
 category_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-category_name VARCHAR(25) UNIQUE NOT NULL
+category_name VARCHAR(50) UNIQUE NOT NULL
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `member`(
@@ -18,13 +18,15 @@ member_img VARCHAR(255) NOT NULL
 CREATE TABLE IF NOT EXISTS activity(
 activity_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 activity_name VARCHAR(50) NOT NULL,
+slug VARCHAR(50) UNIQUE NOT NULL,
 activity_year VARCHAR(25),
 `status` VARCHAR(50),
 subtitle VARCHAR(255),
 summary TEXT,
 `description` TEXT NOT NULL,
-credits TEXT,
-video_url VARCHAR(500),
+credits1 TEXT,
+credits2 TEXT,
+video_url TEXT,
 activity_img VARCHAR(500) NOT NULL,
 id_category INT NOT NULL
 )ENGINE=InnoDB;
@@ -35,6 +37,12 @@ date_value DATETIME NOT NULL,
 place VARCHAR(100) NOT NULL,
 id_activity INT NOT NULL
 )ENGINE=InnoDB;
+
+CREATE TABLE admin (
+    admin_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(100) NOT NULL
+);
 
 ALTER TABLE activity
 ADD FOREIGN KEY (id_category) REFERENCES category(category_id)
@@ -48,34 +56,24 @@ INSERT INTO category (category_name) VALUES
 ('Création'),
 ('Culture et santé -- Action culturelle'),
 ('Projet de territoire -- Action culturelle'),
-('Ateliers attenants aux spectacles -- Action culturelle');
+('Atelier -- Action culturelle');
 
 INSERT INTO activity (
     activity_name,
+    slug,
     activity_year,
     `status`,
     subtitle,
     summary,
     `description`,
-    credits,
+    credits1,
+    credits2,
     video_url,
     activity_img,
-    id_category
-) VALUES (
-
-INSERT INTO activity (
-    activity_name,
-    activity_year,
-    `status`,
-    subtitle,
-    summary,
-    `description`,
-    credits,
-    video_url,
-    activity_img,
-    id_category
-) VALUES (
+    id_category) 
+    VALUES (
     'Le prénom',
+    'le-prenom',
     'Création 2024',
     'Tournée en cours',
     'SOLO DE DANSE ET DE PAROLES INTIMES ET POLITIQUES EN ESPACE PUBLIC',
@@ -87,25 +85,38 @@ INSERT INTO activity (
     En investissant l''espace public et quotidien de ses gestes et textes, Maryem rend commun et politique ce qui jusqu''alors relevait de l''intime : les mouchoirs de sa grand-mère et ses confessions au détour d''un banc, le rire anisé de sa mère, les fêtes de famille paternelle, son rituel capillaire, ce message rempli de condescendance et de racisme ordinaire d''"une femme expérimentée", des bribes d''échanges avec d''autres enfants d''immigré·es, ... Des pans d''intimité qui relèvent pourtant de notre histoire commune, celle des conséquences du passé colonial français. Comment en combler les trous de mémoire et les effacements culturels ? 
     Ce solo nous embarque dans une enquête sensible à la fois intime et collective, à la recherche des fragments des cultures de ses familles, un passé à combler, à relégitimer et à faire sien.
     ',
-    'chorégraphie : XXXX
-    regards extérieurs : YYYY
-    création musicale : ZZZZ',
-    'https://vimeo.com/951071129',
+    'chorégraphie, textes & interprétation : Maryem D.
+	regards extérieurs : Anne Lebatard, Marie Carrère, Mounâ Nemri, Désirée 0100
+	création musicale et sonore : Mélio Diawara
+	régie : Mélio Diawara / Opal Besseas
+	costumes : Récolte studio (Morgane Rozès et Paul Laburre)
+	production et diffusion : Louv Barriol
+	merci à Joël, Lory, Natacha, Joss, Fanny, Elda, Mounâ, Sas, Hindy-Hanene, Laïd, Doria, Siham, Kemla, Marion, Aurélia, Emma, Louise, Zara, Noah, Raphaël, Bastien, Mickaël, Maël, Eliana, Manal, Nezha, Diarra, Nadia, Ibrahima pour leurs témoignages
+	',
+    'production déléguée : Les Thérèses
+	coproductions : Lieux publics - CNAREP & Pôle européen de production, ARTO, Latitude 50 - Pôle des arts du cirque et de la rue, Ax Animation
+	aides à la création : Région Occitanie, Département de la Haute-Garonne, Mairie de Toulouse
+	soutiens : ECLAT, ARTCENA, La petite pierre, Centre Culturel Soupetard, Centre Culturel Henri-Desbals, Cie Ex Nihilo, MJC Ancely, Topfloor festival, Festival Ras el hanout, Festival Rebish, Cie La Baraque
+	',
+    'https://player.vimeo.com/video/951071129?h=2cef335fa2',
     './img/le-prenom.webp',
     1
 );
 
 INSERT INTO activity (
     activity_name,
+    slug,
     activity_year,
     `status`,
     summary,
     `description`,
-    credits,
+    credits1,
+    credits2,
     video_url,
     activity_img,
     id_category
 ) VALUES (
+    'Emboucanement',
     'Emboucanement',
     'Création 2026/2027',
     'En création',

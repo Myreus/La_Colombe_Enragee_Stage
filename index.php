@@ -13,63 +13,9 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><img src="./img/La colombe enragée logo.webp" alt="Logo de La Colombe Enragée"></li>
-            <li class="hamburger-container">
-                <input type="checkbox" class="menu-toggle" id="menu-toggle">
-                <label for="menu-toggle" id="menu-label" class="hamburger-button" aria-label="Menu">
-                    <svg class="hamburger-svg" viewBox="0 0 24 24" width="45" height="45" fill="none"
-                        stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                        <line x1="3" y1="6" x2="21" y2="6" />
-                        <line x1="3" y1="12" x2="21" y2="12" />
-                        <line x1="3" y1="18" x2="21" y2="18" />
-                    </svg>
-                    <svg class="hamburger-svg" viewBox="0 0 24 24" width="45" height="45" fill="none"
-                        stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                        <line x1="3" y1="4" x2="21" y2="20" />
-                        <line x1="3" y1="20" x2="21" y2="4" />
-                    </svg>
-                </label>
-                <ul class="hamburger-links">
-                    <li><a>Actualités</a></li>
-                    <li><a>Créations</a></li>
-                    <li><a>Actions Culturelles</a></li>
-                    <li><a>Cours et Stages</a></li>
-                    <li><a>À propos</a></li>
-                    <li><a>Contact</a></li>
-                </ul>
-            </li>
-            <li class="nav-links"><a>Actualités</a></li>
-            <li class="nav-links sub-menu-container">
-                <a>Créations</a>
-                <ul class="sub-menu-content">
-                    <li><a href="#">Le prénom</a></li>
-                    <li><a href="#">Pour la première fois</a></li>
-                    <li><a href="#">CAFEÏNE</a></li>
-                    <li><a href="#">Hétriotopie</a></li>
-                    <li><a href="#">Éveil</a></li>
-                </ul>
-            </li>
-            <li class="nav-links sub-menu-container">
-                <a>Actions Culturelles</a>
-                <ul class="sub-menu-content">
-                    <li><a href="#">Culture & Santé</a></li>
-                    <li><a href="#">Projets de territoire</a></li>
-                    <li><a href="#">Ateliers attenants au spectacle</a></li>
-                </ul>
-            </li>
-            <li class="nav-links"><a>Cours et Stages</a></li>
-            <li class="nav-links sub-menu-container">
-                <a>À propos</a>
-                <ul class="sub-menu-content">
-                    <li><a href="#">La compagnie</a></li>
-                    <li><a href="#">Trombinoscope</a></li>
-                </ul>
-            </li>
-            <li class="nav-links"><a>Contact</a></li>
-        </ul>
-    </nav>
+
+    <?php require_once 'nav.php'; ?>
+
     <main>
         <article>
             <h1>LA COLOMBE ENRAGÉE</h1>
@@ -85,12 +31,7 @@
                     <p class="details" id="status">Tournée en cours</p>
                 </div>
                 <p class="subtitle">SOLO DE DANSE ET DE PAROLES INTIMES ET POLITIQUES EN ESPACE PUBLIC</p>
-                <p class="description">Dans ce solo mêlant danse et oralité, XXXX XXXX interroge ses racines
-                    africaines et son héritage culturel d’enfant d’immigré·es empêché par des siècles de
-                    colonisation et d’assimilation françaises.
-                    Le prénom c'est la tentative de réparation d'une chaîne brisée, la réappropriation viscérale
-                    d'un héritage à trous. Un témoignage intime comme réconciliation transgénérationnelle et
-                    multiculturelle.</p>
+                <p class="description"></p>
                 <button>Voir plus</button>
             </section>
             <figure>
@@ -150,30 +91,9 @@
             </figure>
         </article>
     </main>
-    <footer>
-        <section>
-            <a href="#">Mentions légales</a>
-            <p>© 2023 by la Colombe enragée.</p>
-        </section>
-        <section>
-            <a href="#">Nous contacter</a>
-        </section>
-        <section>
-            <p>Retrouvez nous sur nos réseaux :</p>
-            <div>
-                <a href="https://www.instagram.com/cie.la.colombe.enragee/" target="_blank"><img src="./img/instagram.png" alt="Instagram logo"></a>
-                <a href="https://www.facebook.com/lacolombeenragee" target="_blank"><img src="./img/facebook.png" alt="Facebook logo"></a>
-                <a href="https://vimeo.com/user65303076" target="_blank"><img src="./img/vimeo.png" alt="Vimeo logo"></a>
-                <a href="https://www.youtube.com/@lacolombeenragee2017" target="_blank"><img src="./img/youtube.png" alt="YouTube logo"></a>
-            </div>
-        </section>
-        <section>
-            <a href="#">Retourner en haut ↑</a>
-        </section>
-        <section>
-            <p>Site réalisé par XXXX XXXX</p>
-        </section>
-    </footer>
+
+    <?php require_once 'footer.php'; ?>
+    
     <script src="./script/main.js"></script>
 </body>
 
