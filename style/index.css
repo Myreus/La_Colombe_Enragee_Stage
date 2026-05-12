@@ -263,7 +263,7 @@ article button {
     height: clamp(50px, 8vh, 75px);
 }
 
-.activity-name, .subtitle, .description {
+.activity-name, .subtitle, .summary {
     color: var(--couleur-fond-blanc);
     margin: 0;
 }

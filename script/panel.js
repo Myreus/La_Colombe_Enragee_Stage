@@ -1,4 +1,3 @@
-// Gestion des onglets
 document.querySelectorAll('.tab-button').forEach(button => {
     button.addEventListener('click', () => {
         const tabId = button.getAttribute('data-tab');

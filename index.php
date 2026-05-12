@@ -19,7 +19,7 @@
     <main>
         <article>
             <h1>LA COLOMBE ENRAGÉE</h1>
-            <p class="description">La Colombe enragée est une compagnie de danse et d'oralité toulousaine évoluant principalement pour et avec l'espace public et les gens qui l'habitent. À travers arts du mouvement et de la parole, Maryem D. et son équipe allient création et médiation pour aller à la rencontre de publics souvent marginalisés et les remettre au centre.</p>
+            <p class="summary">La Colombe enragée est une compagnie de danse et d'oralité toulousaine évoluant principalement pour et avec l'espace public et les gens qui l'habitent. À travers arts du mouvement et de la parole, Maryem D. et son équipe allient création et médiation pour aller à la rencontre de publics souvent marginalisés et les remettre au centre.</p>
             <img src="./img/Lce.webp" alt="La colombe enragée photo équipe">
         </article>
         <article>
@@ -31,7 +31,7 @@
                     <p class="details" id="status">Tournée en cours</p>
                 </div>
                 <p class="subtitle">SOLO DE DANSE ET DE PAROLES INTIMES ET POLITIQUES EN ESPACE PUBLIC</p>
-                <p class="description"></p>
+                <p class="summary"></p>
                 <button>Voir plus</button>
             </section>
             <figure>
@@ -51,7 +51,7 @@
                     avec 3 à 6 danseur·euses
                     expérimentations en contextes urbains variés
                 </p>
-                <p class="description">“Emboucanement” est un projet de création déambulatoire, chorégraphique et orale
+                <p class="summary">“Emboucanement” est un projet de création déambulatoire, chorégraphique et orale
                     pour et avec la rue, avec 3 à 6 danseureuses. Il s’inscrit dans un contexte de transformations de
                     l’espace public profondes : les rues, espaces historiquement occupés par les pauvres, les racisé·es
                     et les personnes marginalisées, sont progressivement « nettoyées », aseptisées et transformées en
@@ -73,7 +73,7 @@
         <article>
             <section>
                 <h3 class="activity-name">Actions Culturelles</h3>
-                <p class="description">Nos actions culturelles prolongent la démarche artistique de la compagnie : créer avec les personnes, les lieux et les récits souvent invisibilisés. À travers des ateliers, stages, résidences de territoire et projets participatifs, nous tentons d’ouvrir des espaces d’expression accessibles où la danse, l’oralité, le jeu, le rythme et l’improvisation deviennent des outils de rencontre, de confiance et de création collective. Chaque projet s’adapte aux participant·es, à leurs besoins et à leurs imaginaires, pour valoriser les présences de chacun·e et transformer les espaces du quotidien en terrains sensibles, poétiques et partagés.</p>
+                <p class="summary">Nos actions culturelles prolongent la démarche artistique de la compagnie : créer avec les personnes, les lieux et les récits souvent invisibilisés. À travers des ateliers, stages, résidences de territoire et projets participatifs, nous tentons d’ouvrir des espaces d’expression accessibles où la danse, l’oralité, le jeu, le rythme et l’improvisation deviennent des outils de rencontre, de confiance et de création collective. Chaque projet s’adapte aux participant·es, à leurs besoins et à leurs imaginaires, pour valoriser les présences de chacun·e et transformer les espaces du quotidien en terrains sensibles, poétiques et partagés.</p>
                 <button>Voir plus</button>
             </section>
             <figure>
@@ -83,7 +83,7 @@
         <article>
             <section>
                 <h3 class="activity-name">La Colombe enragée</h3>
-                <p class="description">La Colombe enragée est une compagnie de danse et d'oralité toulousaine évoluant principalement pour et avec l'espace public et les gens qui l'habitent. À travers arts du mouvement et de la parole, Maryem D. et son équipe allient création et médiation pour aller à la rencontre de publics souvent marginalisés et les remettre au centre.</p>
+                <p class="summary"><?= nl2br(htmlspecialchars($activity['summary'])) ?></p>
                 <button>Voir plus</button>
             </section>
             <figure>

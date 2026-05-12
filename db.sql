@@ -58,6 +58,16 @@ INSERT INTO category (category_name) VALUES
 ('Projet de territoire -- Action culturelle'),
 ('Atelier -- Action culturelle');
 
+INSERT INTO `member` (firstname, lastname, `role`, member_img) VALUES 
+('Maryem', 'D.', 'chorégraphe et porteuse de projets', './img/trombinoscope/Maryem.webp'),
+('Louv', 'Barriol', 'chargé.e de production et de diffusion', './img/trombinoscope/Louv.webp'),
+('Marthe', 'Mosser', 'danseuse collaboratrice', './img/trombinoscope/Marthe.webp'),
+('Fanny', 'Delépine', 'danseuse collaboratrice', './img/trombinoscope/Fanny.webp'),
+('Léon', 'Lia', 'rappeuse', './img/trombinoscope/Lea.webp'),
+('Noah', 'Fiossi', 'danseur.euse collaborateur.ice', './img/trombinoscope/Noah.webp'),
+('Melissa', 'Wyns', 'danseuse collaboratrice', './img/trombinoscope/Melissa.webp'),
+('Kynsie', 'Serre', 'danseuse collaboratrice', './img/trombinoscope/Kynsie.webp');
+
 INSERT INTO activity (
     activity_name,
     slug,
