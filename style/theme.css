@@ -10,10 +10,10 @@
 }
 
 :root {
-    --couleur-principale: #e68e94;
     --couleur-fond-noir: #0d0d0d;
     --couleur-fond-blanc: #f2f2f2;
     --couleur-gris: #404040;
+    --couleur-principale: #e68e94;
     --couleur-secondaire: #f29727;
     --couleur-vert: #37c6b8;
     --taille-navbar: 22vh;

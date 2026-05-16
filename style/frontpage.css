@@ -1,18 +1,15 @@
-/* Main */
-
 main {
     background-color: var(--couleur-fond-noir);
     width: 100%;
     height: auto;
     border-top: 10px solid var(--couleur-principale);
+    overflow: hidden;
 }
-
-/* Section, article et enfants */
 
 article {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     padding-bottom: 5vh;
     width: 100%;
@@ -20,7 +17,6 @@ article {
 }
 
 main article:first-child {
-    /* margin-top: 4vh; */
     flex-direction: column;
 }
 
@@ -84,6 +80,7 @@ article button {
     font-size: clamp(18px, 4vw, 70px);
     font-family: 'Crayon Hand Bold', cursive;
     text-align: center;
+    margin-top: 1vh;
 }
 
 .details {
@@ -94,17 +91,41 @@ article button {
 }
 
 .details-container span {
-    margin: 0 8px;
+    margin: 0 1.4vw;
+    font-size: 1.2vw;
     color: var(--couleur-fond-blanc);
     font-family: 'Open Sans', sans-serif;
 }
 
 #status {
     color: var(--couleur-vert);
+    
 }
 
-/* Media Queries */
-/* Gestion du flex du contenu principal */
+#date-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.date {
+    width: 80%;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateX(-20vw);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in:nth-child(odd) {
+    transform: translateX(20vw);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 @media (max-width: 1024px) {
     article:nth-child(odd) {
         flex-direction: column-reverse;

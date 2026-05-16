@@ -10,16 +10,17 @@ category_name VARCHAR(50) UNIQUE NOT NULL
 CREATE TABLE IF NOT EXISTS `member`(
 member_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 firstname VARCHAR(50) NOT NULL,
-lastname VARCHAR(50) NOT NULL,
-`role` VARCHAR(50) NOT NULL,
-member_img VARCHAR(255) NOT NULL
+lastname VARCHAR(100) NOT NULL,
+`role` VARCHAR(100) NOT NULL,
+member_img VARCHAR(255) NOT NULL,
+display_order TINYINT NOT NULL DEFAULT 0
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS activity(
 activity_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 activity_name VARCHAR(50) NOT NULL,
 slug VARCHAR(50) UNIQUE NOT NULL,
-activity_year VARCHAR(25),
+activity_year VARCHAR(50),
 `status` VARCHAR(50),
 subtitle VARCHAR(255),
 summary TEXT,
@@ -28,6 +29,8 @@ credits1 TEXT,
 credits2 TEXT,
 video_url TEXT,
 activity_img VARCHAR(500) NOT NULL,
+on_frontpage BOOLEAN NOT NULL DEFAULT 0,
+display_order TINYINT NOT NULL DEFAULT 0,
 id_category INT NOT NULL
 )ENGINE=InnoDB;
 
@@ -38,7 +41,7 @@ place VARCHAR(100) NOT NULL,
 id_activity INT NOT NULL
 )ENGINE=InnoDB;
 
-CREATE TABLE admin (
+CREATE TABLE `admin` (
     admin_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
     password_hash VARCHAR(100) NOT NULL
@@ -80,6 +83,8 @@ INSERT INTO activity (
     credits2,
     video_url,
     activity_img,
+    on_frontpage,
+    display_order,
     id_category) 
     VALUES (
     'Le prénom',
@@ -87,7 +92,7 @@ INSERT INTO activity (
     'Création 2024',
     'Tournée en cours',
     'SOLO DE DANSE ET DE PAROLES INTIMES ET POLITIQUES EN ESPACE PUBLIC',
-    'Mêlant danse et oralité, XXXX interroge ses racines africaines et son héritage culturel d''enfant d''immigré·es, empêché par des siècles de colonisation et d''assimilation françaises. 
+    'Mêlant danse et oralité, Maryem D. interroge ses racines africaines et son héritage culturel d''enfant d''immigré·es, empêché par des siècles de colonisation et d''assimilation françaises. 
     Le prénom, c''est la tentative de réparation d''une chaîne brisée, la réappropriation viscérale d''un héritage à trous. Un témoignage sensible et nécessaire comme réconciliation transgénérationnelle et multiculturelle.
     ',
     'Dans ce solo mêlant danse et oralité, Maryem interroge ses racines africaines - ivoiriennes et judéo-algériennes - et son héritage culturel d''enfant d''immigré·es empêché par des siècles de colonisation et d''assimilation françaises. 
@@ -110,6 +115,8 @@ INSERT INTO activity (
 	',
     'https://player.vimeo.com/video/951071129?h=2cef335fa2',
     './img/le-prenom.webp',
+    1,
+    1,
     1
 );
 
@@ -118,32 +125,93 @@ INSERT INTO activity (
     slug,
     activity_year,
     `status`,
+    subtitle,
     summary,
     `description`,
     credits1,
     credits2,
     video_url,
     activity_img,
+    on_frontpage,
+    display_order,
     id_category
 ) VALUES (
     'Emboucanement',
     'Emboucanement',
     'Création 2026/2027',
     'En création',
-    'Danse aux nuisances sonores et olfactives
-    Boucan déambulatoire pour la rue en cours de création (2026-2027)
-    avec 3 à 6 danseur·euses
-    expérimentations en contextes urbains variés
+    'Danse aux nuisances sonores et olfactives',
+    'Boucan déambulatoire pour la rue qui interrogera la gentrification, les normes sonores et olfactives qui régissent l''espace public ainsi que les stigmates qu''elles impliquent pour certains groupes minorisés.
     ',
-    '“Emboucanement” est un projet de création déambulatoire, chorégraphique et orale pour et avec la rue, avec 3 à 6 danseureuses. Il s''inscrit dans un contexte de transformations de l''espace public profondes : les rues, espaces historiquement occupés par les pauvres, les racisé·es et les personnes marginalisées, sont progressivement « nettoyées », aseptisées et transformées en vitrines économiques. Gentrification, normes sécuritaires et dispositifs anti-précaires effacent la mémoire populaire des quartiers et villages et repoussent leurs habitant·es toujours plus loin dans les marges. 
-    Face à cet effacement, La Colombe enragée souhaite revendiquer une réappropriation totale de la rue : y reprendre place par le corps, le son, la voix, l''odeur — sans polissage ni compromis. “Emboucanement” veut revendiquer le bruit et le bordel comme force de vie et de résistance, transformant ainsi les nuisances sonores et olfactives en geste artistique et politique, en célébration joyeuse du vivant et des identités indociles.
+    '“Emboucanement” est un projet de création déambulatoire, chorégraphique et orale pour et avec la rue, avec 3 à 6 danseureuses. Il s’inscrit dans un contexte de transformations de l’espace public profondes : les rues, espaces historiquement occupés par les pauvres, les racisé·es et les personnes marginalisées, sont progressivement « nettoyées », aseptisées et transformées en vitrines économiques. Gentrification, normes sécuritaires et dispositifs anti-précaires effacent la mémoire populaire des quartiers et villages et repoussent leurs habitant·es toujours plus loin dans les marges. 
+	Face à cet effacement, La Colombe enragée souhaite revendiquer une réappropriation totale de la rue : y reprendre place par le corps, le son, la voix, l’odeur — sans polissage ni compromis. “Emboucanement” veut revendiquer le bruit et le bordel comme force de vie et de résistance, transformant ainsi les nuisances sonores et olfactives en geste artistique et politique, en célébration joyeuse du vivant et des identités indociles.
+	',
+    'chorégraphie et mise en espace : Maryem D.
+	danse et collaboration artistique : Fanny Delépine, Kynsie Serre, Marthe Mosser, Melissa Wyns, Noah Fiossi, Elena Vieu musique et son Leon Lia et Mélio Diawara
+	costumes : Récolte studio (Morgane Rozès et Paul Laburre)
+	production et diffusion : Louv Barriol
     ',
-    'chorégraphie et mise en espace : XXXX
-    danse et collaboration artistique : XXXX
-    costumes : XXXX
-    production et diffusion : XXXX
-    ',
-    'https://www.youtube.com/watch?v=XXXXXXXXXXX',
+    'production déléguée : Les Thérèses
+	partenaires : Arto, l’Usine, Lieux Publics, Eurek’Art, Le Tracteur, La Petite Pierre, L’Espace Germinal, Melando, ADEMASS, Le Carroi - Menetou-Salon, DAC Blagnac, Ax Animation, Théâtre du Grand Rond
+	discussions et demandes en cours ou à venir : La Place de la Danse, CC Bonnefoy, Superstrat, ... 
+	en recherche : coproductions, semaines de résidence sur 2027, pré-achats à partir d’octobre 27
+	',
+    null,
     './img/Emboucanement.webp',
+    1,
+    2,
     1
 );
+
+INSERT INTO activity (
+    activity_name,
+    slug,
+    activity_year,
+    `status`,
+    subtitle,
+    summary,
+    `description`,
+    credits1,
+    credits2,
+    video_url,
+    activity_img,
+    on_frontpage,
+    display_order,
+    id_category
+) VALUES (
+    'Emboucanement',
+    'Emboucanement',
+    'Création 2026/2027',
+    'En création',
+    'Danse aux nuisances sonores et olfactives',
+    'Boucan déambulatoire pour la rue qui interrogera la gentrification, les normes sonores et olfactives qui régissent l''espace public ainsi que les stigmates qu''elles impliquent pour certains groupes minorisés.
+    ',
+    '“Emboucanement” est un projet de création déambulatoire, chorégraphique et orale pour et avec la rue, avec 3 à 6 danseureuses. Il s’inscrit dans un contexte de transformations de l’espace public profondes : les rues, espaces historiquement occupés par les pauvres, les racisé·es et les personnes marginalisées, sont progressivement « nettoyées », aseptisées et transformées en vitrines économiques. Gentrification, normes sécuritaires et dispositifs anti-précaires effacent la mémoire populaire des quartiers et villages et repoussent leurs habitant·es toujours plus loin dans les marges. 
+	Face à cet effacement, La Colombe enragée souhaite revendiquer une réappropriation totale de la rue : y reprendre place par le corps, le son, la voix, l’odeur — sans polissage ni compromis. “Emboucanement” veut revendiquer le bruit et le bordel comme force de vie et de résistance, transformant ainsi les nuisances sonores et olfactives en geste artistique et politique, en célébration joyeuse du vivant et des identités indociles.
+	',
+    'chorégraphie et mise en espace : Maryem D.
+	danse et collaboration artistique : Fanny Delépine, Kynsie Serre, Marthe Mosser, Melissa Wyns, Noah Fiossi, Elena Vieu musique et son Leon Lia et Mélio Diawara
+	costumes : Récolte studio (Morgane Rozès et Paul Laburre)
+	production et diffusion : Louv Barriol
+    ',
+    'production déléguée : Les Thérèses
+	partenaires : Arto, l’Usine, Lieux Publics, Eurek’Art, Le Tracteur, La Petite Pierre, L’Espace Germinal, Melando, ADEMASS, Le Carroi - Menetou-Salon, DAC Blagnac, Ax Animation, Théâtre du Grand Rond
+	discussions et demandes en cours ou à venir : La Place de la Danse, CC Bonnefoy, Superstrat, ... 
+	en recherche : coproductions, semaines de résidence sur 2027, pré-achats à partir d’octobre 27
+	',
+    null,
+    './img/Emboucanement.webp',
+    1,
+    2,
+    1
+);
+
+INSERT INTO `date` (`date_value`, `place`, `id_activity`) VALUES
+('2026-06-12 20:30:00', 'Théâtre de la Ville - Paris', 1),
+('2026-06-13 20:30:00', 'Théâtre de la Ville - Paris', 2),
+('2026-06-20 19:00:00', 'Opéra National de Lyon', 1),
+('2026-07-05 18:30:00', 'Grand Théâtre de Provence - Aix-en-Provence', 2),
+('2026-07-12 21:00:00', 'Palais des Festivals - Cannes', 1),
+('2026-08-02 17:00:00', 'Théâtre Antique - Orange', 2),
+('2026-08-15 20:00:00', 'Le Carré - Château-Gontier', 1),
+('2026-09-10 20:45:00', 'Maison de la Danse - Lyon', 2);

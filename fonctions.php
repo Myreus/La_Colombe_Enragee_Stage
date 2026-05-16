@@ -27,4 +27,14 @@ function uploadImage($file, $old_img = null) {
     return $old_img;
 }
 
+function formaterDate(string $dateSql): string {
+    $date = new DateTime($dateSql);
+    $mois = [
+        1 => 'janvier', 2 => 'février', 3 => 'mars', 4 => 'avril',
+        5 => 'mai', 6 => 'juin', 7 => 'juillet', 8 => 'août',
+        9 => 'septembre', 10 => 'octobre', 11 => 'novembre', 12 => 'décembre'
+    ];
+    return 'Le ' . $date->format('j') . ' ' . $mois[(int)$date->format('n')] . ' ' . $date->format('Y') . ' à ' . $date->format('H\hi');
+}
+
 ?>

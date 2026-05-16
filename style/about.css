@@ -1,27 +1,50 @@
-/* Main */
-
 main {
     background-color: var(--couleur-fond-noir);
     max-width: 100%;
     height: auto;
     border-top: 10px solid var(--couleur-principale);
-    
-    
+    color: var(--couleur-fond-blanc);
+}
+
+h2 {
+    font-size: clamp(18px, 4vw, 70px);
+    font-family: 'Crayon Hand Bold', cursive;
+    margin: 4vh 0;
+    text-align: center;
+}
+
+main section {
+    padding-bottom: 10vh;
+}
+
+main section:first-of-type p {
+    font-size: clamp(20px, 1.5vw, 35px);
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin: 4vh 10vw;
+}
+
+main section:first-of-type figure {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    box-sizing: content-box;
+}
+
+main section:last-child {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-/* Section, article et enfants */
 
-article {
+main section:last-child article {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0;
     padding: 5vh 0;
     width: 24%;
-    color: var(--couleur-fond-blanc);
 }
 
 article figure {
@@ -37,7 +60,7 @@ article figure img {
     border: 3px solid var(--couleur-principale);
 }
 
-article section p {
+main section article p {
     font-size: clamp(20px, 1.5vw, 35px);
     font-family: 'Open Sans', sans-serif;
     text-align: center;
@@ -45,7 +68,7 @@ article section p {
     margin: 0;
 }
 
-article section h3 {
+article h3 {
     font-size: clamp(24px, 3vw, 45px);
     font-family: 'Open Sans', sans-serif;
     text-align: center;
@@ -53,14 +76,6 @@ article section h3 {
     margin: 0;
     width: 100%;
 }
-
-article section {
-    display: flex;
-    flex-direction: column;
-    gap: 3vh;
-    align-items: center;
-}
-
 
 @media (max-width: 1024px) {
     article {

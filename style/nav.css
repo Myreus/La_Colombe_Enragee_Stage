@@ -3,7 +3,8 @@ body {
     min-height: 100vh;
 }
 
-a {
+nav a {
+    text-decoration: none;
     cursor: pointer;
 }
     
@@ -53,8 +54,6 @@ nav::after {
     height: 15px;
     background-color: var(--couleur-principale);
 }
-
-/* Menu Hamburger */
 
 .menu-toggle {
     display: none;
@@ -115,13 +114,10 @@ nav::after {
     opacity: 0;
 }
 
-/* Sous-menu déroulants de la barre nav */
-
 .sub-menu-container {
     position: relative;
 }
 
-/* Le pont invisible */
 .sub-menu-container::after {
   content: '';
   position: absolute;
@@ -143,10 +139,10 @@ nav::after {
 .sub-menu-content {
     display: none;
     position: absolute;
-    top: calc(100% + 10px); /* Positionné juste en dessous du pont invisible */
+    top: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%);
-    width: 250px;
+    width: clamp(250px, 20vw, 400px);
     background: var(--couleur-fond-noir);
     list-style: none;
     text-align: center;
@@ -154,7 +150,9 @@ nav::after {
 }
 
 .sub-menu-content li {
-    padding: 10px;
+    width: 90%;
+    padding: 8px;
+    margin: auto;
     display: block;
 }
 
@@ -168,8 +166,6 @@ nav::after {
     display: block;
 }
 
-/* Media Queries */
-/* Gestion de la visibilité du menu hamburger et menus déroulants */
 @media (max-width: 700px) {
     .nav-links {
         display: none;

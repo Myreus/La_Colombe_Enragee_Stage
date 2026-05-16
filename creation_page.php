@@ -46,7 +46,7 @@ if (!empty($activity['video_url'])) {
 }
 
 // Optionnel : récupérer les dates de représentation
-$sqlDates = "SELECT date_value, place FROM date WHERE id_activity = :id ORDER BY date_value ASC";
+$sqlDates = "SELECT d.date_value, d.place FROM `date` AS d WHERE id_activity = :id ORDER BY date_value ASC";
 $reqDates = $pdo->prepare($sqlDates);
 $reqDates->execute([':id' => $id_activity]);
 $dates = $reqDates->fetchAll(PDO::FETCH_ASSOC);
@@ -63,6 +63,7 @@ $dates = $reqDates->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="./style/nav.css">
     <link rel="stylesheet" href="./style/creation_page.css">
     <link rel="stylesheet" href="./style/footer.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12.1.4/swiper-bundle.min.css" />
 </head>
 <body>
     
@@ -85,16 +86,15 @@ $dates = $reqDates->fetchAll(PDO::FETCH_ASSOC);
             <p class="description"><?= nl2br(htmlspecialchars($activity['description'])) ?></p>
 
             <section>
+                <?php if (!empty($video_url)): ?>
                 <div class="video-wrapper">
-                    <?php if ($video_url): ?>
-                        <iframe src="<?= htmlspecialchars($video_url) ?>" 
-                                title="video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                allowfullscreen></iframe>
-                    <?php else: ?>
-                        <p>Aucune vidéo disponible</p>
-                    <?php endif; ?>
+                    <iframe src="<?= htmlspecialchars($video_url) ?>" 
+                            title="video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                    </iframe>
                 </div>
+                <?php endif; ?>
 
                 <div class="credits-card">
                     <p class="credits-text"><?= nl2br(htmlspecialchars($activity['credits1'])) ?></p>
@@ -102,9 +102,46 @@ $dates = $reqDates->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </section>
 
+            
+            <section id="spectacles">
+                <h4 class="title">Galerie</h4>
+
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="./img/Pour la 1ère fois.webp" alt="Spectacle 1" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/le-prenom.webp" alt="Spectacle 2" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./img/Emboucanement - 2.webp" alt="Spectacle 3" />
+                        </div>
+                    </div>
+
+                    <div class="swiper-button-prev">
+                    </div>
+                    <div class="swiper-button-next">
+                    </div>
+
+                    <div class="custom-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="custom-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+            </section>
+
             <?php if (!empty($dates)): ?>
                 <div class="dates-container">
-                    <h4>Prochaines dates</h4>
+                    <h4 class="title">Prochaines dates</h4>
                     <ul>
                         <?php foreach ($dates as $date): ?>
                             <li><?= date('d/m/Y H:i', strtotime($date['date_value'])) ?> – <?= htmlspecialchars($date['place']) ?></li>
@@ -116,5 +153,8 @@ $dates = $reqDates->fetchAll(PDO::FETCH_ASSOC);
     </main>
 
     <?php require_once 'footer.php'; ?>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./script/swiper.js"></script>
 </body>
 </html>
